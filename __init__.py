@@ -46,7 +46,8 @@ def index():
     points = list(linescore['PTS'])
     games = game_data(teams, points)
     MAX = len(games)
-    return render_template('index.html', games = games, max = MAX, today=today.year)
+    date = today.date()
+    return render_template('index.html', games = games, max = MAX, today=date)
 
 #process route, when user submits a date
 @app.route('/process', methods=['POST'])
@@ -61,7 +62,7 @@ def process():
     points = list(linescore['PTS'])
     games = game_data(teams, points)
     MAX = len(games)
-    return render_template('index.html', games = games, max = MAX, today=year)
+    return render_template('index.html', games = games, max = MAX, today=date)
 
 if __name__ == '__main__':
     app.run(debug=True)

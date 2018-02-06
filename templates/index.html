@@ -25,7 +25,7 @@
     <!-- Start nav -->
     <nav class="navbar navbar-dark bg-dark" >
       <a class="navbar-brand" href="#">
-        <img src={{ url_for('static', filename='img/ball.png') }} width="30" height="30" class="d-inline-block align-top" alt="">
+        <img src="{{ url_for('static', filename='img/ball.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
         NBA Today
       </a>
       <form class="form-inline" method="post" action="/process">
@@ -33,21 +33,31 @@
         <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
       </form>
     </nav>
+    <!-- End nav -->
+
+    <!-- Start header/jumbo -->
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container" style="text-align:center;">
+        <h1 class="display-6">showing games for {{ today }}</h1>
+      </div>
+    </div>
+    <!-- End header/jumbo -->
+
     <!-- Start table for todays games -->
     <table class="table">
       <thead>
         <tr>
           <th>#</th>
-          <th>Game</th>
+          <th>Games</th>
           <th>Points</th>
-          <th>Winner</th>
+          <th>Winners</th>
         </tr>
       </thead>
       <tbody>
         <!-- Creating row for each game -->
         {% for i in range(0, max) %}
         <tr>
-          <th scope="row">{{ i }}</th>
+          <th scope="row">{{ i + 1 }}</th>
           <td>{{ games[i][0] }}</td>
           <td>{{ games[i][1] }}</td>
           <td>{{ games[i][2] }}</td>

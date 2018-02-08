@@ -12,13 +12,22 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Bootstrap core js -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <style>
+      .fa{
+        padding: 8px;
+        font-size: 30px;
+      }
 
+      .fa:hover{
+        color: #D5D5D5;
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
@@ -35,37 +44,126 @@
     </nav>
     <!-- End nav -->
 
-    <!-- Start header/jumbo -->
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container" style="text-align:center;">
-        <h1 class="display-6">showing games for {{ today }}</h1>
-      </div>
+  <!-- Start jumbotron -->
+    <div class="jumbotron bg-light" style="margin:0;">
+      <h1 class="display-3">Hello, world!</h1>
+      <p class="lead">This is a simple NBA app, it displays games played and relevant stats for them using a given date.</p>
+      <hr class="my-4">
+      <p>This app was made so that I could learn Flask, a python web framework. You can view the code on my github.</p>
+      <p class="lead">
+        <a class="btn btn-dark btn-lg text-warning" href="#" role="button">Github</a>
+      </p>
     </div>
-    <!-- End header/jumbo -->
+  <!-- End jumbotron -->
 
-    <!-- Start table for todays games -->
-    <table class="table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Games</th>
-          <th>Points</th>
-          <th>Winners</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Creating row for each game -->
-        {% for i in range(0, max) %}
-        <tr>
-          <th scope="row">{{ i + 1 }}</th>
-          <td>{{ games[i][0] }}</td>
-          <td>{{ games[i][1] }}</td>
-          <td>{{ games[i][2] }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    <!-- End table -->
+  <!-- Start game table -->
+    <div id="accordion" style="margin:0;">
+      <div class="card text-white bg-dark">
+        <div class="card-header" id="headingOne">
+          <div class="row">
+            <div class="col">
+              <h5> Games </h5>
+            </div>
+
+            <div class="col">
+              <h5> Points </h5>
+            </div>
+
+            <div class="col">
+              <h5> Winner </h5>
+            </div>
+
+            <div class="col">
+              <h5> Graphs </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% for i in range(max): %}
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+
+              <div class="col">
+                {{ games[i][0] }}
+              </div>
+
+              <div class="col">
+                {{ games[i][1] }}
+              </div>
+
+              <div class="col">
+                {{ games[i][2] }}
+              </div>
+
+              <div class="col">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ i }}" aria-expanded="true" aria-controls="collapse{{ i }}">More ></button>
+                </h5>
+              </div>
+
+            </div>
+          </div>
+
+          <div id="collapse{{ i }}" class="collapse text-white bg-dark" data-parent="#accordion">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <div>
+                    <embed type="image/svg+xml" src={{graph_data[i][0]|safe}} style='max-width:1000px'/>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div>
+                    <embed type="image/svg+xml" src={{graph_data[i][1]|safe}} style='max-width:1000px'/>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div>
+                    <embed type="image/svg+xml" src={{graph_data[i][2]|safe}} style='max-width:1000px'/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <!-- End game table -->
+
+    <!-- Start of footer -->
+    <!-- The footer -->
+    <footer class="container-fluid text-center bg-dark text-light">
+      <div class="row">
+        <div class="col-sm-4">
+          <h3>Hello World!</h3>
+          <br>
+          <p>Please don't actually panic when the table displays no data, the most likely reason this occurs is that the game hasn't been played yet or is in the process of being played</p>
+          <br>
+          <p>This is a simple NBA app, it displays games played and relevant stats for them using a given date. This app was made so that I could learn Flask, a python web framework. You can view the code on my github.</p>
+          <p class="lead">
+            <a class="btn btn-warning btn-lg text-dark" href="#" role="button">Github</a>
+          </p>
+        </div>
+
+        <div class="col-sm-4">
+          <h3>Connect with me</h3>
+          <a href="#" class="fa fa-github text-warning"></a>
+          <a href="#" class="fa fa-linkedin text-warning"></a>
+          <a href="#" class="fa fa-instagram text-warning"></a>
+        </div>
+
+        <div class="col-sm-4" style="margin:0;">
+          <h3>NBA today</h3>
+          <img src="{{ url_for('static', filename='img/ball.png') }}" width="60" height="60">
+        </div>
+
+      </div>
+
+    </footer>
+    <!-- End of footer -->
 
   </body>
 

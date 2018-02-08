@@ -9,4 +9,4 @@ NBA Today is a webapplication made using flask that displays games played on a g
 * [Pygal](http://pygal.org/en/stable/index.html) - Sexy python charting (a python graph API)
 * [Bootstrap](https://getbootstrap.com/) - Simple dimple html, css and javascript
 
-[![Watch Here](https://img.youtube.com/vi/LAAnXt6Tz-w/1.jpg)](https://www.youtube.com/watch?v=LAAnXt6Tz-w)
+[![Watch Here](https://img.youtube.com/vi/LAAnXt6Tz-w/2.jpg)](https://www.youtube.com/watch?v=LAAnXt6Tz-w)

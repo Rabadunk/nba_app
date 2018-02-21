@@ -1,6 +1,6 @@
 # NBA Today
 
-NBA Today is a webapplication made using flask that displays games played on a given day.
+NBA Today is a web application made using flask that displays games played on a given day.
 
 ## Built With
 
@@ -9,10 +9,12 @@ NBA Today is a webapplication made using flask that displays games played on a g
 * [Pygal](http://pygal.org/en/stable/index.html) - Sexy python charting (a python graph API)
 * [Bootstrap](https://getbootstrap.com/) - Simple dimple html, css and javascript
 
-## Examples
-
-You can view an example of the website on my youtube channel here:
-
-[![Watch Here](https://img.youtube.com/vi/LAAnXt6Tz-w/2.jpg)](https://www.youtube.com/watch?v=LAAnXt6Tz-w)
+## Website
 
 I haven't published this website because all data from nba_py is from http://stats.nba.com/ and under their terms of use I am not allowed to display it without permission and so I don't intend on publishing this app.
+
+## Examples
+
+You can see the functionality of the nba app in this gif. If games haven't been played yet then the graphs display NAN. You can search for dates using the calendar in the search bar.
+
+<img src="readme/nba_app.gif">
